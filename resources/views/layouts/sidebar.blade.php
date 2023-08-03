@@ -24,7 +24,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/admin/profile" class="nav-link">
+            <a href="/admin/barang" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Master Barang
@@ -32,7 +32,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/admin/companyprofile" class="nav-link">
+            <a href="/admin/mintabrg" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Permintaan Barang
