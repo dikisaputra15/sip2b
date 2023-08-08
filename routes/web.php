@@ -22,6 +22,11 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index']);
     Route::get('/admin/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/admin/user', [App\Http\Controllers\UserController::class, 'index']);
+    Route::post('/admin/storeregister', [App\Http\Controllers\UserController::class, 'storeregister']);
+    Route::get('/admin/{id}/edituser', [App\Http\Controllers\UserController::class, 'edituser']);
+    Route::get('/admin/adduser', [App\Http\Controllers\UserController::class, 'adduser']);
+    Route::get('/admin/{id}/changeuserpass', [App\Http\Controllers\UserController::class, 'changeuserpass']);
     Route::get('/admin/barang', [App\Http\Controllers\BarangController::class, 'index']);
     Route::get('/admin/addbarang', [App\Http\Controllers\BarangController::class, 'addbarang']);
     Route::post('/admin/storebarang', [App\Http\Controllers\BarangController::class, 'storebarang']);

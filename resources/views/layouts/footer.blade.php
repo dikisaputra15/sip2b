@@ -1,5 +1,5 @@
 <footer class="main-footer">
-    <strong>Copyright &copy; 2022 <a href="https://www.concord-consulting.com">Concord Consulting Indonesia</a>.</strong>
+    <strong>Copyright &copy; 2022 <a href="#">R</a>.</strong>
 </footer>
 
   <!-- Control Sidebar -->
