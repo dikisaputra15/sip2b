@@ -14,5 +14,6 @@ class Barang extends Model
         'satuan',
         'stok',
         'harga_satuan',
+        'stok',
     ];
 }

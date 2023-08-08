@@ -25,7 +25,8 @@ class BarangController extends Controller
         Barang::create([
             'nama_barang' => $request->nama_barang,
             'satuan' => $request->satuan,
-            'harga_satuan' => $request->harga_satuan
+            'harga_satuan' => $request->harga_satuan,
+            'stok' => 0
         ]);
 
         return redirect('admin/barang');
@@ -50,7 +51,8 @@ class BarangController extends Controller
         DB::table('barangs')->where('id',$id)->update([
             'nama_barang' => $request->nama_barang,
 			'satuan' => $request->satuan,
-            'harga_satuan' => $request->harga_satuan
+            'harga_satuan' => $request->harga_satuan,
+            'stok' => 0
 		]);
 
         return redirect("admin/barang");

@@ -24,10 +24,26 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="/admin/user" class="nav-link">
+              <i class="nav-icon far fa-user"></i>
+              <p>
+                Management User
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="/admin/barang" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Master Barang
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/stokbarang" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Stok Barang
               </p>
             </a>
           </li>
