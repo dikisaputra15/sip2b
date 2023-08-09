@@ -27,12 +27,15 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/admin/{id}/edituser', [App\Http\Controllers\UserController::class, 'edituser']);
     Route::get('/admin/adduser', [App\Http\Controllers\UserController::class, 'adduser']);
     Route::get('/admin/{id}/changeuserpass', [App\Http\Controllers\UserController::class, 'changeuserpass']);
+    Route::post('/admin/deluser/{id}', [App\Http\Controllers\UserController::class, 'destroyuser']);
+    Route::post('/admin/updatepass', [App\Http\Controllers\UserController::class, 'updatepass']);
     Route::get('/admin/barang', [App\Http\Controllers\BarangController::class, 'index']);
     Route::get('/admin/addbarang', [App\Http\Controllers\BarangController::class, 'addbarang']);
     Route::post('/admin/storebarang', [App\Http\Controllers\BarangController::class, 'storebarang']);
     Route::get('/admin/delbrg/{id}', [App\Http\Controllers\BarangController::class, 'destroybrg']);
     Route::get('/admin/{id}/editbrg', [App\Http\Controllers\BarangController::class, 'editbrg']);
     Route::post('/admin/updatebarang', [App\Http\Controllers\BarangController::class, 'updatebarang']);
+    Route::get('/admin/stokbarang', [App\Http\Controllers\BarangController::class, 'stokbarang']);
     Route::get('/admin/mintabrg', [App\Http\Controllers\MintaController::class, 'index']);
     Route::get('/admin/addpermintaan', [App\Http\Controllers\MintaController::class, 'addpermintaan']);
     Route::post('/admin/storepermintaan', [App\Http\Controllers\MintaController::class, 'storepermintaan']);

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     use RegistersUsers;
-    
+
     public function index()
     {
         $users = User::all();
@@ -36,7 +36,7 @@ class UserController extends Controller
         ]);
 
         return redirect('admin/user')->with('alert-primary','user created successfully');
-       
+
     }
 
     public function edituser($id)
@@ -49,5 +49,30 @@ class UserController extends Controller
     {
         $user = User::find($id);
         return view('admin.changeuserpass', compact(['user']));
+    }
+
+    public function updatepass(Request $request)
+    {
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+        if(!Hash::check($request->old_password, auth()->user()->password)){
+            return back()->with("error", "Old Password Doesn't match!");
+        }
+
+        User::whereId($request->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return redirect('admin/user')->with('alert-primary','password updated');
+
+    }
+
+    public function destroyuser($id)
+    {
+        DB::table('users')->where('id', $id)->delete();
+        return redirect("admin/user");
     }
 }
