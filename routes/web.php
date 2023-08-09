@@ -36,12 +36,20 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/admin/{id}/editbrg', [App\Http\Controllers\BarangController::class, 'editbrg']);
     Route::post('/admin/updatebarang', [App\Http\Controllers\BarangController::class, 'updatebarang']);
     Route::get('/admin/stokbarang', [App\Http\Controllers\BarangController::class, 'stokbarang']);
+    Route::get('/admin/lapstok', [App\Http\Controllers\BarangController::class, 'lapstok']);
+    Route::get('/admin/pdfstok', [App\Http\Controllers\BarangController::class, 'pdfstok']);
+    Route::get('/admin/lapbarangmasuk', [App\Http\Controllers\BarangController::class, 'lapbarangmasuk']);
+    Route::get('/admin/lapbarangkeluar', [App\Http\Controllers\BarangController::class, 'lapbarangkeluar']);
     Route::get('/admin/mintabrg', [App\Http\Controllers\MintaController::class, 'index']);
     Route::get('/admin/addpermintaan', [App\Http\Controllers\MintaController::class, 'addpermintaan']);
     Route::post('/admin/storepermintaan', [App\Http\Controllers\MintaController::class, 'storepermintaan']);
     Route::get('/admin/delminta/{id}', [App\Http\Controllers\MintaController::class, 'destroyminta']);
     Route::get('/admin/{id}/editminta', [App\Http\Controllers\MintaController::class, 'editminta']);
     Route::post('/admin/updatepermintaan', [App\Http\Controllers\MintaController::class, 'updatepermintaan']);
+    Route::get('/admin/barangmasuk', [App\Http\Controllers\BmController::class, 'index']);
+    Route::get('/admin/barangkeluar', [App\Http\Controllers\BkController::class, 'index']);
+    Route::post('/admin/pdfmasuk', [App\Http\Controllers\BarangController::class, 'pdfmasuk']);
+    Route::post('/admin/pdfkeluar', [App\Http\Controllers\BarangController::class, 'pdfkeluar']);
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

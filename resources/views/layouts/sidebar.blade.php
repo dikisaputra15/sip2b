@@ -56,7 +56,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/admin/companyprofile" class="nav-link">
+            <a href="/admin/barangmasuk" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Barang Masuk
@@ -64,7 +64,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/admin/companyprofile" class="nav-link">
+            <a href="/admin/barangkeluar" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Barang Keluar
@@ -81,19 +81,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="/admin/lapstok" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Laporan Stok Barang</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                <a href="/admin/lapbarangmasuk" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Laporan Barang Masuk</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/boxed.html" class="nav-link">
+                <a href="/admin/lapbarangkeluar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Laporan Barang Keluar</p>
                 </a>
