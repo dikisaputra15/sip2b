@@ -47,7 +47,11 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/admin/{id}/editminta', [App\Http\Controllers\MintaController::class, 'editminta']);
     Route::post('/admin/updatepermintaan', [App\Http\Controllers\MintaController::class, 'updatepermintaan']);
     Route::get('/admin/barangmasuk', [App\Http\Controllers\BmController::class, 'index']);
+    Route::get('/admin/addbarangmasuk', [App\Http\Controllers\BmController::class, 'addbarangmasuk']);
+    Route::post('/admin/storebarangmasuk', [App\Http\Controllers\BmController::class, 'storebarangmasuk']);
     Route::get('/admin/barangkeluar', [App\Http\Controllers\BkController::class, 'index']);
+    Route::get('/admin/addbarangkeluar', [App\Http\Controllers\BkController::class, 'addbarangkeluar']);
+    Route::post('/admin/storebarangkeluar', [App\Http\Controllers\BkController::class, 'storebarangkeluar']);
     Route::post('/admin/pdfmasuk', [App\Http\Controllers\BarangController::class, 'pdfmasuk']);
     Route::post('/admin/pdfkeluar', [App\Http\Controllers\BarangController::class, 'pdfkeluar']);
 });
