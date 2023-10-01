@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Barangmasuk;
 use App\Models\Detailbarangmasuk;
 use App\Models\Barang;
+use Illuminate\Support\Facades\DB;
 
 class BmController extends Controller
 {
@@ -45,5 +46,17 @@ class BmController extends Controller
         }
 
         return redirect('admin/barangmasuk');
+    }
+
+    public function detailbm($id)
+    {
+        $bm = DB::table('detailbarangmasuks')
+        ->join('barangmasuks', 'detailbarangmasuks.id_barang_masuk', '=', 'barangmasuks.id')
+        ->join('barangs', 'detailbarangmasuks.id_barang', '=', 'barangs.id')
+        ->select('detailbarangmasuks.*', 'barangmasuks.*', 'barangs.*')
+        ->where('detailbarangmasuks.id_barang_masuk', $id)
+        ->get();
+
+        return view('admin.detailbm', compact('bm'));
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Barangkeluar;
 use App\Models\Detailbarangkeluar;
 use App\Models\Barang;
+use Illuminate\Support\Facades\DB;
 
 class BkController extends Controller
 {
@@ -45,5 +46,16 @@ class BkController extends Controller
         }
 
         return redirect('admin/barangkeluar');
+    }
+
+    public function detailbk($id)
+    {
+        $bk = DB::table('detailbarangkeluars')
+        ->join('barangkeluars', 'detailbarangkeluars.id_barang_keluar', '=', 'barangkeluars.id')
+        ->join('barangs', 'detailbarangkeluars.id_barang', '=', 'barangs.id')
+        ->select('detailbarangkeluars.*', 'barangkeluars.*', 'barangs.*')
+        ->where('detailbarangkeluars.id_barang_keluar', $id)
+        ->get();
+        return view('admin.detailbk', compact('bk'));
     }
 }

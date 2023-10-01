@@ -54,6 +54,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/admin/storebarangkeluar', [App\Http\Controllers\BkController::class, 'storebarangkeluar']);
     Route::post('/admin/pdfmasuk', [App\Http\Controllers\BarangController::class, 'pdfmasuk']);
     Route::post('/admin/pdfkeluar', [App\Http\Controllers\BarangController::class, 'pdfkeluar']);
+    Route::get('/admin/{id}/detailbm', [App\Http\Controllers\BmController::class, 'detailbm']);
+    Route::get('/admin/{id}/detailbk', [App\Http\Controllers\BkController::class, 'detailbk']);
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
