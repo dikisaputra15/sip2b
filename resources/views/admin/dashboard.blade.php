@@ -6,7 +6,7 @@
 
 <div class="card">
     <div class="card-header bg-white">
-        <h3>Dashboard Monitoring Pengawasan Barang</h3>
+        <h3>Dashboard Monitoring Pemesanan dan Pengambilan Barang</h3>
     </div>
     <div class="card-body">
          <div class="row">
