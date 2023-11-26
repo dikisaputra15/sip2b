@@ -6,20 +6,26 @@ use Illuminate\Http\Request;
 use App\Models\Mintabarang;
 use App\Models\Barang;
 use App\Models\Barangdetail;
+use App\Models\Pesanbarang;
+use App\Models\Supplier;
 use Illuminate\Support\Facades\DB;
 
 class MintaController extends Controller
 {
     public function index()
     {
-        $mintas = Mintabarang::all();
+        $mintas = DB::table('pesanbarangs')
+                    ->join('suppliers', 'pesanbarangs.id_supplier', '=', 'suppliers.id')
+                    ->select('suppliers.*', 'pesanbarangs.*')
+                    ->get();
         return view('admin.mintabarang', compact('mintas'));
     }
 
     public function addpermintaan()
     {
         $barangs = Barang::all();
-        return view('admin.addpermintaan', compact('barangs'));
+        $suppliers = Supplier::all();
+        return view('admin.addpermintaan', compact('barangs','suppliers'));
     }
 
     public function storepermintaan(Request $request)

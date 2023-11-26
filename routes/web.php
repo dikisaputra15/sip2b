@@ -56,6 +56,13 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/admin/pdfkeluar', [App\Http\Controllers\BarangController::class, 'pdfkeluar']);
     Route::get('/admin/{id}/detailbm', [App\Http\Controllers\BmController::class, 'detailbm']);
     Route::get('/admin/{id}/detailbk', [App\Http\Controllers\BkController::class, 'detailbk']);
+    Route::get('/admin/addbarangkeluar', [App\Http\Controllers\BkController::class, 'addbarangkeluar']);
+    Route::get('/admin/supplier', [App\Http\Controllers\SupplierController::class, 'index']);
+    Route::get('/admin/addsupplier', [App\Http\Controllers\SupplierController::class, 'addsupplier']);
+    Route::post('/admin/storesupplier', [App\Http\Controllers\SupplierController::class, 'storesupplier']);
+    Route::get('/admin/delsupplier/{id}', [App\Http\Controllers\SupplierController::class, 'destroysup']);
+    Route::get('/admin/{id}/editsupplier', [App\Http\Controllers\SupplierController::class, 'editsupplier']);
+    Route::post('/admin/updatesupplier', [App\Http\Controllers\SupplierController::class, 'updatesupplier']);
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

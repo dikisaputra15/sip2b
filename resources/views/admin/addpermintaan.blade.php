@@ -6,46 +6,47 @@
 
 <div class="card">
     <div class="card-header bg-white">
-        <h3>Form Permintaan</h3>
+        <h3>Form Pemesanan Barang</h3>
     </div>
     <div class="card-body">
         <form method="POST" action="{{ url('admin/storepermintaan') }}">
             @csrf
 
             <div class="row mb-3">
-                <label for="fullname" class="col-md-4 col-form-label text-md-end">Tanggal</label>
+                <label for="fullname" class="col-md-4 col-form-label text-md-end">Tanggal Pesan</label>
                 <div class="col-md-6">
                     <input id="tanggal" type="date" class="form-control" name="tanggal" required>
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label for="date_of_birtht" class="col-md-4 col-form-label text-md-end">Keperluan Proyek</label>
+                <label for="occupation" class="col-md-4 col-form-label text-md-end">Supplier</label>
+                <div class="col-md-6">
+                    <select class="form-control" name="id_supplier">
+                        <option value="0">-Pilih Supplier-</option>
+                        @foreach($suppliers as $sup)
+                            <option value="{{ $sup->id }}">{{ $sup->nama_supplier }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="date_of_birtht" class="col-md-4 col-form-label text-md-end">Nama Pemesan</label>
                 <div class="col-md-6">
                     <input id="keperluan_proyek" type="text" class="form-control" name="keperluan_proyek" required>
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label for="occupation" class="col-md-4 col-form-label text-md-end">Lokasi Proyek</label>
+                <label for="occupation" class="col-md-4 col-form-label text-md-end">Email Pemesan</label>
                 <div class="col-md-6">
                     <input id="lokasi_proyek" type="text" class="form-control" name="lokasi_proyek" required>
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label for="occupation" class="col-md-4 col-form-label text-md-end">Kode</label>
-                <div class="col-md-6">
-                    <select class="form-control" name="kode">
-                        <option value="0">-Pilih Kode-</option>
-                        <option value="pengambilan">Pengambilan</option>
-                        <option value="pengembalian">Pengembalian</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <label for="occupation" class="col-md-4 col-form-label text-md-end">Nama Kepala Gudang</label>
+                <label for="occupation" class="col-md-4 col-form-label text-md-end">Alamat Pemesan</label>
                 <div class="col-md-6">
                     <input id="nama_kagudang" type="text" class="form-control" name="nama_kagudang" required>
                 </div>

@@ -15,12 +15,12 @@
             <div class="small-box bg-info">
               <div class="inner">
 
-                <p>Stok Barang</p>
+                <p>Barang</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="/admin/stokbarang" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/admin/barang" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
@@ -29,7 +29,7 @@
             <div class="small-box bg-success">
               <div class="inner">
 
-                <p>Barang Masuk</p>
+                <p>Pemesanan Barang</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -42,7 +42,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <p>Barang Keluar</p>
+                <p>Pengambilan Barang</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>

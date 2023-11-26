@@ -32,6 +32,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="/admin/supplier" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Data Supplier
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="/admin/barang" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
@@ -40,18 +48,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/admin/stokbarang" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                Stok Barang
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
             <a href="/admin/mintabrg" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
-                Permintaan Barang
+                Pemesanan Barang
               </p>
             </a>
           </li>
@@ -59,15 +59,7 @@
             <a href="/admin/barangmasuk" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
-                Barang Masuk
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/admin/barangkeluar" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Barang Keluar
+                Pengambilan Barang
               </p>
             </a>
           </li>
@@ -83,19 +75,19 @@
               <li class="nav-item">
                 <a href="/admin/lapstok" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Laporan Stok Barang</p>
+                  <p>Stok Barang</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/admin/lapbarangmasuk" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Laporan Barang Masuk</p>
+                  <p>Pemesanan Barang</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/admin/lapbarangkeluar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Laporan Barang Keluar</p>
+                  <p>Pengambilan Barang</p>
                 </a>
               </li>
             </ul>

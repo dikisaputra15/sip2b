@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Barangmasuk;
 use App\Models\Detailbarangmasuk;
 use App\Models\Barang;
+use App\Models\Ambilbarang;
 use Illuminate\Support\Facades\DB;
 
 class BmController extends Controller
 {
     public function index()
     {
-        $bms = Barangmasuk::all();
+        $bms = Ambilbarang::all();
         return view('admin.barangmasuk', compact('bms'));
     }
 
