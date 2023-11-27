@@ -34,27 +34,27 @@
             <div class="row mb-3">
                 <label for="date_of_birtht" class="col-md-4 col-form-label text-md-end">Nama Pemesan</label>
                 <div class="col-md-6">
-                    <input id="keperluan_proyek" type="text" class="form-control" name="keperluan_proyek" required>
+                    <input id="nama_pemesan" type="text" class="form-control" name="nama_pemesan" required>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <label for="occupation" class="col-md-4 col-form-label text-md-end">Email Pemesan</label>
                 <div class="col-md-6">
-                    <input id="lokasi_proyek" type="text" class="form-control" name="lokasi_proyek" required>
+                    <input id="email_pemesan" type="email" class="form-control" name="email_pemesan" required>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <label for="occupation" class="col-md-4 col-form-label text-md-end">Alamat Pemesan</label>
                 <div class="col-md-6">
-                    <input id="nama_kagudang" type="text" class="form-control" name="nama_kagudang" required>
+                    <input id="alamat_pemesan" type="text" class="form-control" name="alamat_pemesan" required>
                 </div>
             </div>
 
             <div class="control-group after-add-more10">
                       <div class="form-group">
-                          <div class="col-xs-4">
+                          <div class="col-xs-6">
                               <label for="first_name"><h4>Uraian Barang</h4></label>
                               <select class="form-control" name="barang[]">
                                     <option value="0">-Pilih Barang-</option>
@@ -65,15 +65,9 @@
                           </div>
                       </div>
                       <div class="form-group">
-                          <div class="col-xs-3">
+                          <div class="col-xs-5">
                              <label for="mobile"><h4>Jumlah Diminta</h4></label>
                               <input type="text" class="form-control" name="diminta[]" id="diminta">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          <div class="col-xs-4">
-                              <label for="email"><h4>Keterangan</h4></label>
-                              <input type="text" class="form-control" name="keterangan[]" id="keterangan">
                           </div>
                       </div>
                       <div class="form-group">
@@ -97,7 +91,7 @@
         <div class="copy10 hide">
         <div class="control-group10">
         <div class="form-group">
-            <div class="col-xs-4">
+            <div class="col-xs-6">
                 <label for="first_name"><h4>Uraian Barang</h4></label>
                 <select class="form-control" name="barang[]">
                         <option value="0">-Pilih Barang-</option>
@@ -108,15 +102,9 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-xs-3">
+            <div class="col-xs-5">
                 <label for="mobile"><h4>Jumlah Diminta</h4></label>
                 <input type="text" class="form-control" name="diminta[]" id="diminta">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-xs-4">
-                <label for="email"><h4>Keterangan</h4></label>
-                <input type="text" class="form-control" name="keterangan[]" id="keterangan">
             </div>
         </div>
         <div class="form-group">

@@ -31,28 +31,27 @@ class MintaController extends Controller
     public function storepermintaan(Request $request)
     {
 
-        $minta = Mintabarang::create([
-                    'tanggal' => $request->tanggal,
-                    'keperluan_proyek' => $request->keperluan_proyek,
-                    'lokasi_proyek' => $request->lokasi_proyek,
-                    'kode' => $request->kode,
-                    'nama_kagudang' => $request->nama_kagudang
+        $minta = Pesanbarang::create([
+                    'tgl_pesan' => $request->tanggal,
+                    'id_supplier' => $request->id_supplier,
+                    'nama_pemesan' => $request->nama_pemesan,
+                    'email_pemesan' => $request->email_pemesan,
+                    'alamat_pemesan' => $request->alamat_pemesan,
+                    'keterangan' => 'proses pemesanan'
                 ]);
 
         if($minta){
             $barang = $request->barang;
-            $last_id = Mintabarang::latest()->first();
+            $last_id = Pesanbarang::latest()->first();
             $id_minta = $last_id->id;
             $jml_diminta = $request->diminta;
             $keterangan = $request->keterangan;
 
             for($i=0; $i<count($barang); $i++){
                 Barangdetail::create([
-                    'id_minta' => $id_minta,
+                    'id_pesam_barang' => $id_minta,
                     'id_barang' => $barang[$i],
-                    'jml_diminta' => $jml_diminta[$i],
-                    'jml_dipenuhi' => 0,
-                    'keterangan' => $keterangan[$i]
+                    'jml_barang' => $jml_diminta[$i]
                 ]);
             }
         }
