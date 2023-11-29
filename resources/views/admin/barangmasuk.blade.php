@@ -1,21 +1,21 @@
 @extends('layouts.master')
 
-@section('title','Barang')
+@section('title','Pengambilan Barang')
 
 @section('conten')
 
 <div class="card">
     <div class="card-header bg-white">
-        <h3>Pengembalian Barang</h3>
+        <h3>Pengambilan Barang</h3>
     </div>
     <div class="card-body">
     <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Pengembalian Barang</h3>
+                <h3 class="card-title">Pengambilan Barang</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <a href="/admin/addbarangmasuk" class="btn btn-primary">+Add Pengembalian Barang</a></br></br>
+                <a href="/admin/addbarangmasuk" class="btn btn-primary">+Add Pengambilan Barang</a></br></br>
                 <table id="example" class="table table-bordered table-hover">
                   <thead>
                   <tr>

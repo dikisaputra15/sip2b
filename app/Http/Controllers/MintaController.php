@@ -8,6 +8,7 @@ use App\Models\Barang;
 use App\Models\Barangdetail;
 use App\Models\Pesanbarang;
 use App\Models\Supplier;
+use App\Models\Detailpesan;
 use Illuminate\Support\Facades\DB;
 
 class MintaController extends Controller
@@ -48,8 +49,8 @@ class MintaController extends Controller
             $keterangan = $request->keterangan;
 
             for($i=0; $i<count($barang); $i++){
-                Barangdetail::create([
-                    'id_pesam_barang' => $id_minta,
+                Detailpesan::create([
+                    'id_pesan_barang' => $id_minta,
                     'id_barang' => $barang[$i],
                     'jml_barang' => $jml_diminta[$i]
                 ]);
@@ -61,15 +62,19 @@ class MintaController extends Controller
 
     public function destroyminta($id)
     {
-        DB::table('mintabarangs')->where('id', $id)->delete();
-        DB::table('barangdetails')->where('id_minta', $id)->delete();
+        DB::table('pesanbarangs')->where('id', $id)->delete();
+        DB::table('detailpesans')->where('id_pesan_barang', $id)->delete();
         return redirect("admin/mintabrg");
     }
 
     public function editminta($id)
     {
-        $minta = Mintabarang::find($id);
-        return view('admin.editminta', compact(['minta']));
+        $minta = Pesanbarang::find($id);
+        $listbar = DB::table('detailpesans')
+        ->join('barangs', 'detailpesans.id_barang', '=', 'barangs.id')
+        ->select('barangs.*', 'detailpesans.*')
+        ->get();
+        return view('admin.editminta', compact(['minta','listbar']));
     }
 
     public function updatepermintaan(Request $request)
@@ -85,5 +90,33 @@ class MintaController extends Controller
 		]);
 
         return redirect("admin/mintabrg");
+    }
+
+    public function destroylistpesan($id)
+    {
+        $id_pes = Detailpesan::find($id);
+
+        DB::table('detailpesans')->where('id', $id)->delete();
+        return redirect("admin/$id_pes->id_pesan_barang/editminta");
+    }
+
+    public function editlistpesan($id)
+    {
+        $listpesan = Detailpesan::find($id);
+        $barangs = Barang::all();
+        return view('admin.editlistpesan', compact(['listpesan','barangs']));
+    }
+
+    public function updatelistpesan(Request $request)
+    {
+        $id = $request->id_detailpes;
+        $id_pes = Detailpesan::find($id);
+
+        DB::table('detailpesans')->where('id',$id)->update([
+            'id_barang' => $request->id_barang,
+            'jml_barang' => $request->jml_barang
+		]);
+
+        return redirect("admin/$id_pes->id_pesan_barang/editminta");
     }
 }

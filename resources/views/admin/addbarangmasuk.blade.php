@@ -1,35 +1,56 @@
 @extends('layouts.master')
 
-@section('title','Barang Masuk')
+@section('title','Form Pengambilan Barang')
 
 @section('conten')
 
 <div class="card">
     <div class="card-header bg-white">
-        <h3>Barang Masuk</h3>
+        <h3>Pengambilan Barang</h3>
     </div>
     <div class="card-body">
         <form method="POST" action="{{ url('admin/storebarangmasuk') }}">
             @csrf
 
             <div class="row mb-3">
-                <label for="fullname" class="col-md-4 col-form-label text-md-end">Tanggal Barang Masuk</label>
+                <label for="fullname" class="col-md-4 col-form-label text-md-end">Tanggal Ambil</label>
                 <div class="col-md-6">
-                    <input id="tgl_barang_masuk" type="date" class="form-control" name="tgl_barang_masuk" required>
+                    <input id="tanggal" type="date" class="form-control" name="tanggal" required>
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label for="date_of_birtht" class="col-md-4 col-form-label text-md-end">Nama Penerima</label>
+                <label for="date_of_birtht" class="col-md-4 col-form-label text-md-end">Nama Kepala Gudang</label>
                 <div class="col-md-6">
-                    <input id="nama_penerima" type="text" class="form-control" name="nama_penerima" required>
+                    <input id="nama_kagudang" type="text" class="form-control" name="nama_kagudang" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="occupation" class="col-md-4 col-form-label text-md-end">Keperluan Proyek</label>
+                <div class="col-md-6">
+                    <input id="keperluan_proyek" type="email" class="form-control" name="keperluan_proyek" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="occupation" class="col-md-4 col-form-label text-md-end">Lokasi Proyek</label>
+                <div class="col-md-6">
+                    <input id="lokasi_proyek" type="text" class="form-control" name="lokasi_proyek" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="occupation" class="col-md-4 col-form-label text-md-end">Nama Pengambil</label>
+                <div class="col-md-6">
+                    <input id="nama_pengambil" type="text" class="form-control" name="nama_pegambil" required>
                 </div>
             </div>
 
             <div class="control-group after-add-more10">
                       <div class="form-group">
                           <div class="col-xs-6">
-                              <label for="first_name"><h4>Uraian Barang Masuk</h4></label>
+                              <label for="first_name"><h4>Uraian Barang Yang Diambil</h4></label>
                               <select class="form-control" name="barang[]">
                                     <option value="0">-Pilih Barang-</option>
                                 @foreach($barangs as $brg)
@@ -40,7 +61,7 @@
                       </div>
                       <div class="form-group">
                           <div class="col-xs-5">
-                             <label for="mobile"><h4>Jumlah Barang Masuk</h4></label>
+                             <label for="mobile"><h4>Jumlah Barang Yang Diambil</h4></label>
                               <input type="text" class="form-control" name="diminta[]" id="diminta">
                           </div>
                       </div>
@@ -66,7 +87,7 @@
         <div class="control-group10">
         <div class="form-group">
             <div class="col-xs-6">
-                <label for="first_name"><h4>Uraian Barang Masuk</h4></label>
+                <label for="first_name"><h4>Uraian Barang Yang Diambil</h4></label>
                 <select class="form-control" name="barang[]">
                         <option value="0">-Pilih Barang-</option>
                     @foreach($barangs as $brg)
@@ -77,7 +98,7 @@
         </div>
         <div class="form-group">
             <div class="col-xs-5">
-                <label for="mobile"><h4>Jumlah Barang Masuk</h4></label>
+                <label for="mobile"><h4>Jumlah Barang Yang Diambil</h4></label>
                 <input type="text" class="form-control" name="diminta[]" id="diminta">
             </div>
         </div>

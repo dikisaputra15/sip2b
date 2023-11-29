@@ -63,6 +63,9 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/admin/delsupplier/{id}', [App\Http\Controllers\SupplierController::class, 'destroysup']);
     Route::get('/admin/{id}/editsupplier', [App\Http\Controllers\SupplierController::class, 'editsupplier']);
     Route::post('/admin/updatesupplier', [App\Http\Controllers\SupplierController::class, 'updatesupplier']);
+    Route::get('/admin/dellistpesan/{id}', [App\Http\Controllers\MintaController::class, 'destroylistpesan']);
+    Route::get('/admin/{id}/editlistpesan', [App\Http\Controllers\MintaController::class, 'editlistpesan']);
+    Route::post('/admin/updatelistpesan', [App\Http\Controllers\MintaController::class, 'updatelistpesan']);
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
