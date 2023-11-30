@@ -23,6 +23,7 @@
               </p>
             </a>
           </li>
+          @if (auth()->user()->type == '0')
           <li class="nav-item">
             <a href="/admin/user" class="nav-link">
               <i class="nav-icon far fa-user"></i>
@@ -47,6 +48,9 @@
               </p>
             </a>
           </li>
+          @endif
+
+          @if (auth()->user()->type == '0' || auth()->user()->type == '1')
           <li class="nav-item">
             <a href="/admin/mintabrg" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -55,6 +59,9 @@
               </p>
             </a>
           </li>
+          @endif
+
+          @if (auth()->user()->type == '0' || auth()->user()->type == '2')
           <li class="nav-item">
             <a href="/admin/barangmasuk" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
@@ -63,7 +70,9 @@
               </p>
             </a>
           </li>
+          @endif
 
+          @if (auth()->user()->type == '0')
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -92,7 +101,7 @@
               </li>
             </ul>
           </li>
-
+          @endif
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

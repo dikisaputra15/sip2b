@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('keperluan_proyek');
             $table->string('lokasi_proyek');
             $table->string('nama_pengambil');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }

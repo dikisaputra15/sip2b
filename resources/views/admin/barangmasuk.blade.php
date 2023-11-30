@@ -25,6 +25,7 @@
                     <th>Keperluan Proyek</th>
                     <th>Lokasi Proyek</th>
                     <th>Nama Pengambil</th>
+                    <th>Keterangan</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -38,6 +39,7 @@
                         <td>{{ $bm->keperluan_proyek }}</td>
                         <td>{{ $bm->lokasi_proyek }}</td>
                         <td>{{ $bm->nama_pengambil }}</td>
+                        <td>{{ $bm->keterangan }}</td>
                         <td>
                             <a href="/admin/{{ $bm->id }}/detailbm" title="View Detail"><i class="fa fa-eye"></i></a>
                             <a href="/admin/{{ $bm->id }}/editambil" title="Edit"><i class="fa fa-edit"></i></a>

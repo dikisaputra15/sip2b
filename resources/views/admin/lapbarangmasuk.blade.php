@@ -1,43 +1,69 @@
 @extends('layouts.master')
 
-@section('title','Laporan')
+@section('title','Laporan Pemesanan Barang')
 
 @section('conten')
 
 <div class="card">
     <div class="card-header bg-white">
-        <h3>Laporan Barang Masuk Berdasarkan Tanggal</h3>
+        <h3>Laporan Pemesanan Barang</h3>
     </div>
     <div class="card-body">
-        <form method="POST" action="{{ url('admin/pdfmasuk') }}" target="__blank">
-            @csrf
-
-            <div class="row mb-3">
-                <label for="fullname" class="col-md-4 col-form-label text-md-end">Tanggal</label>
-                <div class="col-md-6">
-                    <input id="tgl1" type="date" class="form-control" name="tgl1" required>
-                </div>
+    <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Laporan Pemesanan Barang</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Tanggal Pesan</th>
+                    <th>Nama Supplier</th>
+                    <th>Nama Pemesan</th>
+                    <th>Email Pemesan</th>
+                    <th>Alamat Pemesan</th>
+                    <th>Keterangan</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    @php($i = 1)
+                    @foreach($mintas as $minta)
+                    <tr>
+                        <td>{{ $i++ }}</td>
+                        <td>{{ $minta->tgl_pesan }}</td>
+                        <td>{{ $minta->nama_supplier }}</td>
+                        <td>{{ $minta->nama_pemesan }}</td>
+                        <td>{{ $minta->email_pemesan }}</td>
+                        <td>{{ $minta->alamat_pemesan }}</td>
+                        <td>{{ $minta->keterangan }}</td>
+                        <td>
+                            <a href="/admin/{{ $minta->id }}/pdfmasuk" title="View PDF" target="__blank"><i class="fa fa-eye"></i></a>
+                        </td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
             </div>
-
-            <div class="row mb-3">
-                <label for="date_of_birtht" class="col-md-4 col-form-label text-md-end">Sampai dengan Tanggal</label>
-                <div class="col-md-6">
-                    <input id="tgl2" type="date" class="form-control" name="tgl2" required>
-                </div>
-            </div>
-           
-
-            <div class="row mb-0">
-                <div class="col-md-6 offset-md-4">
-                    <button type="submit" class="btn btn-primary">
-                        Lihat
-                    </button>
-                </div>
-            </div>
-        </form>
     </div>
 </div>
 
-
 @endsection
+
+@push('service')
+<script>
+$(document).ready(function(){
+    $('#example').DataTable({
+        "pageLength": 10,
+        "ordering": false,
+    })
+
+});
+</script>
+@endpush
+
 

@@ -52,8 +52,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/admin/barangkeluar', [App\Http\Controllers\BkController::class, 'index']);
     Route::get('/admin/addbarangkeluar', [App\Http\Controllers\BkController::class, 'addbarangkeluar']);
     Route::post('/admin/storebarangkeluar', [App\Http\Controllers\BkController::class, 'storebarangkeluar']);
-    Route::post('/admin/pdfmasuk', [App\Http\Controllers\BarangController::class, 'pdfmasuk']);
-    Route::post('/admin/pdfkeluar', [App\Http\Controllers\BarangController::class, 'pdfkeluar']);
+    Route::get('/admin/{id}/pdfmasuk', [App\Http\Controllers\BarangController::class, 'pdfmasuk']);
+    Route::get('/admin/{id}/pdfkeluar', [App\Http\Controllers\BarangController::class, 'pdfkeluar']);
     Route::get('/admin/{id}/detailbm', [App\Http\Controllers\BmController::class, 'detailbm']);
     Route::get('/admin/{id}/detailbk', [App\Http\Controllers\BkController::class, 'detailbk']);
     Route::get('/admin/addbarangkeluar', [App\Http\Controllers\BkController::class, 'addbarangkeluar']);
@@ -74,6 +74,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/admin/updatelistambil', [App\Http\Controllers\BmController::class, 'updatelistambil']);
     Route::get('/admin/{id}/detailpesan', [App\Http\Controllers\MintaController::class, 'detailpesan']);
     Route::get('/admin/konfir_sup/{id}', [App\Http\Controllers\MintaController::class, 'konfirsup']);
+    Route::get('/admin/konfir_ambil/{id}', [App\Http\Controllers\BmController::class, 'konfirambil']);
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

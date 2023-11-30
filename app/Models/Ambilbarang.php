@@ -15,5 +15,6 @@ class Ambilbarang extends Model
         'keperluan_proyek',
         'lokasi_proyek',
         'nama_pengambil',
+        'keterangan',
     ];
 }

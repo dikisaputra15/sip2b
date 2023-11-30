@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Barang;
+use App\Models\Ambilbarang;
+use App\Models\Pesanbarang;
+use App\Models\Supplier;
 use Illuminate\Support\Facades\DB;
 
 use PDF;
@@ -83,47 +86,50 @@ class BarangController extends Controller
 
     public function lapbarangmasuk()
     {
-        return view('admin.lapbarangmasuk');
+        $mintas = DB::table('pesanbarangs')
+                    ->join('suppliers', 'pesanbarangs.id_supplier', '=', 'suppliers.id')
+                    ->select('suppliers.*', 'pesanbarangs.*')
+                    ->get();
+        return view('admin.lapbarangmasuk', compact('mintas'));
     }
 
     public function lapbarangkeluar()
     {
-        return view('admin.lapbarangkeluar');
+        $bms = Ambilbarang::all();
+        return view('admin.lapbarangkeluar', compact('bms'));
     }
 
-    public function pdfmasuk(Request $request)
+    public function pdfmasuk($id)
     {
-        
-        $tgl1 = $request->tgl1;
-        $tgl2 = $request->tgl2;
 
-        $data = DB::table('detailbarangmasuks')
-        ->join('barangmasuks', 'detailbarangmasuks.id_barang_masuk', '=', 'barangmasuks.id')
-        ->join('barangs', 'detailbarangmasuks.id_barang', '=', 'barangs.id')
-        ->select('detailbarangmasuks.*', 'barangmasuks.*', 'barangs.*')
-        ->whereBetween('barangmasuks.tgl_barang_masuk', [$tgl1, $tgl2])
+        $minta = Pesanbarang::find($id);
+        $id_supplier = $minta->id_supplier;
+        $supplier = Supplier::find($id_supplier);
+        $listdetail = DB::table('detailpesans')
+        ->join('barangs', 'detailpesans.id_barang', '=', 'barangs.id')
+        ->join('pesanbarangs', 'pesanbarangs.id', '=', 'detailpesans.id_pesan_barang')
+        ->select('barangs.*', 'detailpesans.*', 'pesanbarangs.*')
+        ->where('pesanbarangs.id', $id)
         ->get();
 
-        $pdf = PDF::loadView('pdfmasuk', compact('data'));
+        $pdf = PDF::loadView('pdfmasuk', compact(['listdetail','minta','supplier']));
         $pdf->setPaper('A4', 'potrait');
         return $pdf->stream('pdfmasuk.pdf');
 
     }
 
-    public function pdfkeluar(Request $request)
+    public function pdfkeluar($id)
     {
-        
-        $tgl1 = $request->tgl1;
-        $tgl2 = $request->tgl2;
 
-        $data = DB::table('detailbarangkeluars')
-        ->join('barangkeluars', 'detailbarangkeluars.id_barang', '=', 'barangkeluars.id')
-        ->join('barangs', 'detailbarangkeluars.id', '=', 'barangs.id')
-        ->select('detailbarangkeluars.*', 'barangkeluars.*', 'barangs.*')
-        ->whereBetween('barangkeluars.tgl_barang_keluar', [$tgl1, $tgl2])
+        $ambil = Ambilbarang::find($id);
+        $bm = DB::table('detailambils')
+        ->join('barangs', 'detailambils.id_barang', '=', 'barangs.id')
+        ->join('ambilbarangs', 'ambilbarangs.id', '=', 'detailambils.id_ambil_barang')
+        ->select('barangs.*', 'detailambils.*', 'ambilbarangs.*')
+        ->where('ambilbarangs.id', $id)
         ->get();
 
-        $pdf = PDF::loadView('pdfkeluar', compact('data'));
+        $pdf = PDF::loadView('pdfkeluar', compact('bm','ambil'));
         $pdf->setPaper('A4', 'potrait');
         return $pdf->stream('pdfkeluar.pdf');
 

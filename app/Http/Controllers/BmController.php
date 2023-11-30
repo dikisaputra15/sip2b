@@ -32,7 +32,8 @@ class BmController extends Controller
                     'nama_kagudang' => $request->nama_kagudang,
                     'keperluan_proyek' => $request->keperluan_proyek,
                     'lokasi_proyek' => $request->lokasi_proyek,
-                    'nama_pengambil' => $request->nama_pengambil
+                    'nama_pengambil' => $request->nama_pengambil,
+                    'keterangan' => 'pengambilan barang diproses'
                 ]);
 
         if($bm){
@@ -55,14 +56,15 @@ class BmController extends Controller
 
     public function detailbm($id)
     {
-        $bm = DB::table('detailbarangmasuks')
-        ->join('barangmasuks', 'detailbarangmasuks.id_barang_masuk', '=', 'barangmasuks.id')
-        ->join('barangs', 'detailbarangmasuks.id_barang', '=', 'barangs.id')
-        ->select('detailbarangmasuks.*', 'barangmasuks.*', 'barangs.*')
-        ->where('detailbarangmasuks.id_barang_masuk', $id)
+        $ambil = Ambilbarang::find($id);
+        $bm = DB::table('detailambils')
+        ->join('barangs', 'detailambils.id_barang', '=', 'barangs.id')
+        ->join('ambilbarangs', 'ambilbarangs.id', '=', 'detailambils.id_ambil_barang')
+        ->select('barangs.*', 'detailambils.*', 'ambilbarangs.*')
+        ->where('ambilbarangs.id', $id)
         ->get();
 
-        return view('admin.detailbm', compact('bm'));
+        return view('admin.detailbm', compact('bm','ambil'));
     }
 
     public function destroybm($id)
@@ -123,5 +125,41 @@ class BmController extends Controller
 		]);
 
         return redirect("admin/$id_ambil->id_ambil_barang/editambil");
+    }
+
+    public function konfirambil($id)
+    {
+
+        $baru = DB::table('detailambils')
+                ->where('detailambils.id_ambil_barang', $id)
+                ->get();
+
+        foreach($baru as $te)
+        {
+            $id_barang = $te->id_barang;
+
+            $lama = DB::table('barangs')
+            ->where('id', $id_barang)
+            ->get();
+
+            foreach($lama as $la)
+            {
+                $jml_lama = $la->stok;
+                $jml_baru = $te->jml_barang;
+
+                $sisa = $jml_lama - $jml_baru;
+                DB::table('barangs')->where('id',$id_barang)->update([
+                    'stok' => $sisa
+                ]);
+            }
+
+        }
+
+        DB::table('ambilbarangs')->where('id',$id)->update([
+            'keterangan' => "barang sudah dikeluarkan darigudang"
+        ]);
+
+        return redirect("admin/barangmasuk");
+
     }
 }
