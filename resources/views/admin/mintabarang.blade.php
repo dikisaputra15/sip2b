@@ -43,6 +43,7 @@
                         <td>
                             <a href="/admin/{{ $minta->id }}/editminta" title="Update"><i class="fa fa-edit"></i></a>
                             <a href="/admin/delminta/<?php echo $minta->id ?>" onclick="return confirm('Are you sure to delete this ?');" title="Delete"><i class="fa fa-trash"></i></a>
+                            <a href="/admin/{{ $minta->id }}/detailpesan" title="View Detail"><i class="fa fa-eye"></i></a>
                         </td>
                     </tr>
                     @endforeach

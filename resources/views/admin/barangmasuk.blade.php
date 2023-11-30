@@ -39,7 +39,8 @@
                         <td>{{ $bm->lokasi_proyek }}</td>
                         <td>{{ $bm->nama_pengambil }}</td>
                         <td>
-                            <a href="/admin/{{ $bm->id }}/detailbm" title="Detail"><i class="fa fa-eye"></i></a>
+                            <a href="/admin/{{ $bm->id }}/detailbm" title="View Detail"><i class="fa fa-eye"></i></a>
+                            <a href="/admin/{{ $bm->id }}/editambil" title="Edit"><i class="fa fa-edit"></i></a>
                             <a href="/admin/delbm/<?php echo $bm->id ?>" onclick="return confirm('Are you sure to delete this ?');" title="Delete"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>

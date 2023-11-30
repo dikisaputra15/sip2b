@@ -15,7 +15,7 @@
             <div class="row mb-3">
                 <label for="fullname" class="col-md-4 col-form-label text-md-end">Tanggal Ambil</label>
                 <div class="col-md-6">
-                    <input id="tanggal" type="date" class="form-control" name="tanggal" required>
+                    <input id="tanggal" type="date" class="form-control" name="tgl_ambil" required>
                 </div>
             </div>
 
@@ -29,7 +29,7 @@
             <div class="row mb-3">
                 <label for="occupation" class="col-md-4 col-form-label text-md-end">Keperluan Proyek</label>
                 <div class="col-md-6">
-                    <input id="keperluan_proyek" type="email" class="form-control" name="keperluan_proyek" required>
+                    <input id="keperluan_proyek" type="text" class="form-control" name="keperluan_proyek" required>
                 </div>
             </div>
 
@@ -43,7 +43,7 @@
             <div class="row mb-3">
                 <label for="occupation" class="col-md-4 col-form-label text-md-end">Nama Pengambil</label>
                 <div class="col-md-6">
-                    <input id="nama_pengambil" type="text" class="form-control" name="nama_pegambil" required>
+                    <input id="nama_pengambil" type="text" class="form-control" name="nama_pengambil" required>
                 </div>
             </div>
 

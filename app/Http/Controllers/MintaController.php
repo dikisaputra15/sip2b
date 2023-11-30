@@ -119,4 +119,55 @@ class MintaController extends Controller
 
         return redirect("admin/$id_pes->id_pesan_barang/editminta");
     }
+
+    public function detailpesan($id)
+    {
+        $minta = Pesanbarang::find($id);
+        $id_supplier = $minta->id_supplier;
+        $supplier = Supplier::find($id_supplier);
+        $listdetail = DB::table('detailpesans')
+        ->join('barangs', 'detailpesans.id_barang', '=', 'barangs.id')
+        ->join('pesanbarangs', 'pesanbarangs.id', '=', 'detailpesans.id_pesan_barang')
+        ->select('barangs.*', 'detailpesans.*', 'pesanbarangs.*')
+        ->where('pesanbarangs.id', $id)
+        ->get();
+
+        return view('admin.listdetail', compact(['listdetail','minta','supplier']));
+    }
+
+    public function konfirsup($id)
+    {
+
+        $baru = DB::table('detailpesans')
+                ->where('detailpesans.id_pesan_barang', $id)
+                ->get();
+
+        foreach($baru as $te)
+        {
+            $id_barang = $te->id_barang;
+
+            $lama = DB::table('barangs')
+            ->where('id', $id_barang)
+            ->get();
+
+            foreach($lama as $la)
+            {
+                $jml_lama = $la->stok;
+                $jml_baru = $te->jml_barang;
+
+                $sisa = $jml_lama + $jml_baru;
+                DB::table('barangs')->where('id',$id_barang)->update([
+                    'stok' => $sisa
+                ]);
+            }
+
+        }
+
+        DB::table('pesanbarangs')->where('id',$id)->update([
+            'keterangan' => "Pesanan diterima supplier dan diantar menuju gudang"
+        ]);
+
+        return redirect("admin/mintabrg");
+
+    }
 }

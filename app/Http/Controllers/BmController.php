@@ -7,6 +7,7 @@ use App\Models\Barangmasuk;
 use App\Models\Detailbarangmasuk;
 use App\Models\Barang;
 use App\Models\Ambilbarang;
+use App\Models\Detailambil;
 use Illuminate\Support\Facades\DB;
 
 class BmController extends Controller
@@ -26,22 +27,25 @@ class BmController extends Controller
     public function storebarangmasuk(Request $request)
     {
 
-        $bm = Barangmasuk::create([
-                    'tgl_barang_masuk' => $request->tgl_barang_masuk,
-                    'nama_penerima' => $request->nama_penerima
+        $bm = Ambilbarang::create([
+                    'tgl_ambil' => $request->tgl_ambil,
+                    'nama_kagudang' => $request->nama_kagudang,
+                    'keperluan_proyek' => $request->keperluan_proyek,
+                    'lokasi_proyek' => $request->lokasi_proyek,
+                    'nama_pengambil' => $request->nama_pengambil
                 ]);
 
         if($bm){
             $barang = $request->barang;
-            $last_id = Barangmasuk::latest()->first();
-            $id_barang_masuk = $last_id->id;
-            $jml_barang_masuk = $request->diminta;
+            $last_id = Ambilbarang::latest()->first();
+            $id_ambil_barang = $last_id->id;
+            $jml_barang = $request->diminta;
 
             for($i=0; $i<count($barang); $i++){
-                Detailbarangmasuk::create([
-                    'id_barang_masuk' => $id_barang_masuk,
+                Detailambil::create([
+                    'id_ambil_barang' => $id_ambil_barang,
                     'id_barang' => $barang[$i],
-                    'jml_barang_masuk' => $jml_barang_masuk[$i]
+                    'jml_barang' => $jml_barang[$i]
                 ]);
             }
         }
@@ -59,5 +63,65 @@ class BmController extends Controller
         ->get();
 
         return view('admin.detailbm', compact('bm'));
+    }
+
+    public function destroybm($id)
+    {
+        DB::table('ambilbarangs')->where('id', $id)->delete();
+        DB::table('detailambils')->where('id_ambil_barang', $id)->delete();
+        return redirect("admin/barangmasuk");
+    }
+
+    public function editambil($id)
+    {
+        $ambil = Ambilbarang::find($id);
+        $listbar = DB::table('detailambils')
+        ->join('barangs', 'detailambils.id_barang', '=', 'barangs.id')
+        ->select('barangs.*', 'detailambils.*')
+        ->get();
+        return view('admin.editambil', compact(['ambil','listbar']));
+    }
+
+    public function updateambil(Request $request)
+    {
+        $id = $request->id_ambil;
+
+        DB::table('ambilbarangs')->where('id',$id)->update([
+            'tgl_ambil' => $request->tgl_ambil,
+			'nama_kagudang' => $request->nama_kagudang,
+            'keperluan_proyek' => $request->keperluan_proyek,
+            'lokasi_proyek' => $request->lokasi_proyek,
+            'nama_pengambil' => $request->nama_pengambil
+		]);
+
+        return redirect("admin/barangmasuk");
+    }
+
+    public function destroylistambil($id)
+    {
+        $id_ambil = Detailambil::find($id);
+
+        DB::table('detailambils')->where('id', $id)->delete();
+        return redirect("admin/$id_ambil->id_ambil_barang/editambil");
+    }
+
+    public function editlistambil($id)
+    {
+        $listambil = Detailambil::find($id);
+        $barangs = Barang::all();
+        return view('admin.editlistambil', compact(['listambil','barangs']));
+    }
+
+    public function updatelistambil(Request $request)
+    {
+        $id = $request->id_detail_ambil;
+        $id_ambil = Detailambil::find($id);
+
+        DB::table('detailambils')->where('id',$id)->update([
+            'id_barang' => $request->id_barang,
+            'jml_barang' => $request->jml_barang
+		]);
+
+        return redirect("admin/$id_ambil->id_ambil_barang/editambil");
     }
 }

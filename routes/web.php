@@ -66,6 +66,14 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/admin/dellistpesan/{id}', [App\Http\Controllers\MintaController::class, 'destroylistpesan']);
     Route::get('/admin/{id}/editlistpesan', [App\Http\Controllers\MintaController::class, 'editlistpesan']);
     Route::post('/admin/updatelistpesan', [App\Http\Controllers\MintaController::class, 'updatelistpesan']);
+    Route::get('/admin/delbm/{id}', [App\Http\Controllers\BmController::class, 'destroybm']);
+    Route::get('/admin/{id}/editambil', [App\Http\Controllers\BmController::class, 'editambil']);
+    Route::post('/admin/updateambil', [App\Http\Controllers\BmController::class, 'updateambil']);
+    Route::get('/admin/dellistambil/{id}', [App\Http\Controllers\BmController::class, 'destroylistambil']);
+    Route::get('/admin/{id}/editlistambil', [App\Http\Controllers\BmController::class, 'editlistambil']);
+    Route::post('/admin/updatelistambil', [App\Http\Controllers\BmController::class, 'updatelistambil']);
+    Route::get('/admin/{id}/detailpesan', [App\Http\Controllers\MintaController::class, 'detailpesan']);
+    Route::get('/admin/konfir_sup/{id}', [App\Http\Controllers\MintaController::class, 'konfirsup']);
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

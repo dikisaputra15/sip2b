@@ -23,6 +23,7 @@
                     <th>Nama Barang</th>
                     <th>Satuan</th>
                     <th>Harga Satuan</th>
+                    <th>Stok</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -34,6 +35,7 @@
                         <td>{{ $brg->nama_barang }}</td>
                         <td>{{ $brg->satuan }}</td>
                         <td>{{ $brg->harga_satuan }}</td>
+                        <td>{{ $brg->stok }}</td>
                         <td>
                             <a href="/admin/{{ $brg->id }}/editbrg" title="Update"><i class="fa fa-edit"></i></a>
                             <a href="/admin/delbrg/<?php echo $brg->id ?>" onclick="return confirm('Are you sure to delete this ?');" title="Delete"><i class="fa fa-trash"></i></a>
