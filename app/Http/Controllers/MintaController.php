@@ -170,4 +170,13 @@ class MintaController extends Controller
         return redirect("admin/mintabrg");
 
     }
+
+    public function suratjalan()
+    {
+        $mintas = DB::table('pesanbarangs')
+        ->join('suppliers', 'pesanbarangs.id_supplier', '=', 'suppliers.id')
+        ->select('suppliers.*', 'pesanbarangs.*')
+        ->get();
+        return view('admin.suratjalan', compact('mintas'));
+    }
 }

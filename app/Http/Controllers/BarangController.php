@@ -135,4 +135,23 @@ class BarangController extends Controller
 
     }
 
+    public function cetaksj($id)
+    {
+
+        $minta = Pesanbarang::find($id);
+        $id_supplier = $minta->id_supplier;
+        $supplier = Supplier::find($id_supplier);
+        $listdetail = DB::table('detailpesans')
+        ->join('barangs', 'detailpesans.id_barang', '=', 'barangs.id')
+        ->join('pesanbarangs', 'pesanbarangs.id', '=', 'detailpesans.id_pesan_barang')
+        ->select('barangs.*', 'detailpesans.*', 'pesanbarangs.*')
+        ->where('pesanbarangs.id', $id)
+        ->get();
+
+        $pdf = PDF::loadView('cetaksj', compact(['listdetail','minta','supplier']));
+        $pdf->setPaper('A4', 'potrait');
+        return $pdf->stream('cetaksj.pdf');
+
+    }
+
 }

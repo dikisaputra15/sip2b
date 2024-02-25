@@ -75,6 +75,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/admin/{id}/detailpesan', [App\Http\Controllers\MintaController::class, 'detailpesan']);
     Route::get('/admin/konfir_sup/{id}', [App\Http\Controllers\MintaController::class, 'konfirsup']);
     Route::get('/admin/konfir_ambil/{id}', [App\Http\Controllers\BmController::class, 'konfirambil']);
+    Route::get('/admin/suratjalan', [App\Http\Controllers\MintaController::class, 'suratjalan']);
+    Route::get('/admin/{id}/cetaksj', [App\Http\Controllers\BarangController::class, 'cetaksj']);
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
